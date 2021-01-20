@@ -3,6 +3,7 @@ import { AnimalCard } from "./animal/AnimalCard.js";
 import { EmployeeCard } from "./employee/EmployeeCard.js";
 import { LocationCard } from "./location/LocationCard.js";
 import { CustomerCard } from "./customer/CustomerCard.js";
+import { PropsAndState } from "./PropsAndState.js";
 import "./animal/Animal.css";
 import "./employee/Employee.css";
 import "./location/Location.css";
@@ -18,6 +19,7 @@ export const Kennel = () => (
             <div>500 Puppy Way</div>
         </address>
 
+        <PropsAndState yourName="Ryan" />
         <h2>Animals</h2>
         <article className="animals">
             <AnimalCard />
