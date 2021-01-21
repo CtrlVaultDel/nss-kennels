@@ -2,12 +2,14 @@
 // It is used to control how the rest of the system behaves
 // Imagine it as an old phone router station
 
+// IMPORTS
 import React from "react";
 import { Route } from "react-router-dom";
 import { Home } from "./Home";
 
 // Locations
-import { LocationCard } from "./location/LocationCard";
+import { LocationProvider } from "./location/LocationProvider.js";
+import { LocationList } from "./location/LocationList.js";
 
 // Animals
 import { AnimalProvider } from "./animal/AnimalProvider.js";
@@ -20,6 +22,7 @@ import { CustomerList } from "./customer/CustomerList.js";
 // Employees
 import { EmployeeProvider } from "./employee/EmployeeProvider.js";
 import { EmployeeList } from "./employee/EmployeeList.js";
+// -----
 
 export const ApplicationViews = () => {
     return (
@@ -31,9 +34,11 @@ export const ApplicationViews = () => {
             </Route>
 
             {/* Render the animal list when http://localhost:3000/locations */}
-            <Route path="/locations">
-                <LocationCard />
-            </Route>
+            <LocationProvider>
+                <Route path="/locations">
+                    <LocationList />
+                </Route>
+            </LocationProvider>
 
             {/* Render the animal list when http://localhost:3000/animals */}
             <AnimalProvider>
