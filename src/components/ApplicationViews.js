@@ -2,14 +2,27 @@
 // It is used to control how the rest of the system behaves
 // Imagine it as an old phone router station
 
+// IMPORTS
 import React from "react";
 import { Route } from "react-router-dom";
 import { Home } from "./Home";
-import { LocationCard } from "./location/LocationCard";
+
+// Locations
+import { LocationProvider } from "./location/LocationProvider.js";
+import { LocationList } from "./location/LocationList.js";
+
+// Animals
 import { AnimalProvider } from "./animal/AnimalProvider.js";
 import { AnimalList } from "./animal/AnimalList.js";
-import { CustomerCard } from "./customer/CustomerCard";
-import { EmployeeCard } from "./employee/EmployeeCard";
+
+// Customers
+import { CustomerProvider } from "./customer/CustomerProvider.js";
+import { CustomerList } from "./customer/CustomerList.js";
+
+// Employees
+import { EmployeeProvider } from "./employee/EmployeeProvider.js";
+import { EmployeeList } from "./employee/EmployeeList.js";
+// -----
 
 export const ApplicationViews = () => {
     return (
@@ -21,9 +34,11 @@ export const ApplicationViews = () => {
             </Route>
 
             {/* Render the animal list when http://localhost:3000/locations */}
-            <Route path="/locations">
-                <LocationCard />
-            </Route>
+            <LocationProvider>
+                <Route path="/locations">
+                    <LocationList />
+                </Route>
+            </LocationProvider>
 
             {/* Render the animal list when http://localhost:3000/animals */}
             <AnimalProvider>
@@ -33,14 +48,18 @@ export const ApplicationViews = () => {
             </AnimalProvider>
 
             {/* Render the animal list when http://localhost:3000/customers */}
-            <Route path="/customers">
-                <CustomerCard />
-            </Route>
+            <CustomerProvider>
+                <Route path="/customers">
+                    <CustomerList />
+                </Route>
+            </CustomerProvider>
 
             {/* Render the animal list when http://localhost:3000/employees */}
-            <Route path="/employees">
-                <EmployeeCard />
-            </Route>
+            <EmployeeProvider>
+                <Route path="/employees">
+                    <EmployeeList />
+                </Route>
+            </EmployeeProvider>
         </>
     );
 };
