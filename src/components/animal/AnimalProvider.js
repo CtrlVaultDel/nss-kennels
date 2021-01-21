@@ -1,11 +1,16 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext } from "react"
 
 // The context is imported and used by individual components that need data
+// createContext() makes an object with properties
 export const AnimalContext = createContext();
 
 // This component establishes what data can be used.
 export const AnimalProvider = (props) => {
-    const [animals, setAnimals] = useState([]);
+    // [Variable(Storage), Function(Changes Variable)] = useState([])
+    // Set the first thing that useState returns to animals and the second thing to setAnimals
+    // When we use setAnimals we are calling the function responsible for changing the value of animals
+    // The initial value of animals is an empty array useState([])
+    const [animals, setAnimals] = useState([])
 
     const getAnimals = () => {
         return fetch("http://localhost:8088/animals?_expand=location")
@@ -30,10 +35,11 @@ export const AnimalProvider = (props) => {
         and the `addAnimal` function as keys. This
         allows any child elements to access them.
     */
+    // Subcomponent that renders a subset of itself called a Provider
+    // Provider = Interface that other components can use in order to gain access
+    // to what the provider holds.
     return (
-        <AnimalContext.Provider value={{
-            animals, getAnimals, addAnimal
-        }}>
+        <AnimalContext.Provider value={{animals, getAnimals, addAnimal}}>
             {props.children}
         </AnimalContext.Provider>
     );
