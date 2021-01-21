@@ -1,5 +1,5 @@
 import React from "react";
-import { AnimalCard } from "./animal/AnimalCard.js";
+import { AnimalList } from "./animal/AnimalList.js";
 import { EmployeeCard } from "./employee/EmployeeCard.js";
 import { LocationCard } from "./location/LocationCard.js";
 import { CustomerCard } from "./customer/CustomerCard.js";
@@ -23,9 +23,7 @@ export const Home = () => (
         <PropsAndState yourName="Ryan" />
         <h2>Animals</h2>
         <article className="animals">
-            <AnimalCard />
-            <AnimalCard />
-            <AnimalCard />
+            <AnimalList />
         </article>
 
         <h2>Employees</h2>
