@@ -10,10 +10,11 @@ export const AnimalProvider = (props) => {
     // Set the first thing that useState returns to animals and the second thing to setAnimals
     // When we use setAnimals we are calling the function responsible for changing the value of animals
     // The initial value of animals is an empty array useState([])
+    // useState must have an empty array since in AnimalList it actually uses animal.map so it has to be an array even though it's empty
     const [animals, setAnimals] = useState([])
 
     const getAnimals = () => {
-        return fetch("http://localhost:8088/animals?_expand=location")
+        return fetch("http://localhost:8088/animals?_expand=location&_expand=customer")
         .then(res => res.json())
         .then(setAnimals);
     };
