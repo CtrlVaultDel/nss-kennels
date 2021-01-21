@@ -5,12 +5,21 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { Home } from "./Home";
+
+// Locations
 import { LocationCard } from "./location/LocationCard";
+
+// Animals
 import { AnimalProvider } from "./animal/AnimalProvider.js";
 import { AnimalList } from "./animal/AnimalList.js";
-import { EmployeeCard } from "./employee/EmployeeCard";
+
+// Customers
 import { CustomerProvider } from "./customer/CustomerProvider.js";
 import { CustomerList } from "./customer/CustomerList.js";
+
+// Employees
+import { EmployeeProvider } from "./employee/EmployeeProvider.js";
+import { EmployeeList } from "./employee/EmployeeList.js";
 
 export const ApplicationViews = () => {
     return (
@@ -41,9 +50,11 @@ export const ApplicationViews = () => {
             </CustomerProvider>
 
             {/* Render the animal list when http://localhost:3000/employees */}
-            <Route path="/employees">
-                <EmployeeCard />
-            </Route>
+            <EmployeeProvider>
+                <Route path="/employees">
+                    <EmployeeList />
+                </Route>
+            </EmployeeProvider>
         </>
     );
 };
