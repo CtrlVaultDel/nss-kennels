@@ -1,3 +1,7 @@
+// Nothing from this component ends up in the DOM.
+// It is used to control how the rest of the system behaves
+// Imagine it as an old phone router station
+
 import React from "react";
 import { Route } from "react-router-dom";
 import { Home } from "./Home";
@@ -10,6 +14,7 @@ export const ApplicationViews = () => {
     return (
         <>
             {/* Render the location list when http://localhost:3000/ */}
+            {/* Uses the keyword "exact" in order to not match the rest of the routes */}
             <Route exact path="/">
                 <Home />
             </Route>
