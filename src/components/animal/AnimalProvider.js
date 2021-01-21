@@ -35,6 +35,9 @@ export const AnimalProvider = (props) => {
         and the `addAnimal` function as keys. This
         allows any child elements to access them.
     */
+    // Subcomponent that renders a subset of itself called a Provider
+    // Provider = Interface that other components can use in order to gain access
+    // to what the provider holds.
     return (
         <AnimalContext.Provider value={{animals, getAnimals, addAnimal}}>
             {props.children}
