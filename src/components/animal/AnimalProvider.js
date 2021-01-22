@@ -14,7 +14,7 @@ export const AnimalProvider = (props) => {
     const [animals, setAnimals] = useState([])
 
     const getAnimals = () => {
-        return fetch("http://localhost:8088/animals")
+        return fetch("http://localhost:8088/animals?_expand=customer&_expand=location")
         .then(res => res.json())
         .then(setAnimals);
     };
