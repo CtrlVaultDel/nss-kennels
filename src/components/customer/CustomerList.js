@@ -4,7 +4,7 @@ import { CustomerCard } from "./CustomerCard.js";
 import "./Customer.css";
 
 export const CustomerList = () => {
-  // This state changes when `getAnimals()` is invoked below
+  // This state changes when `getCustomers()` is invoked below
   const { customers, getCustomers } = useContext(CustomerContext);
 
   //useEffect - reach out to the world for something

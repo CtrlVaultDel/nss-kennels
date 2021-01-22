@@ -4,7 +4,7 @@ import { LocationCard } from "./LocationCard.js";
 import "./Location.css";
 
 export const LocationList = () => {
-  // This state changes when `getAnimals()` is invoked below
+  // This state changes when `getLocations()` is invoked below
   const { locations, getLocations } = useContext(LocationContext);
 
   //useEffect - reach out to the world for something
