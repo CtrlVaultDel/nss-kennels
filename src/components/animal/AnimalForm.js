@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import { LocationContext } from "../location/LocationProvider";
 import { AnimalContext } from "../animal/AnimalProvider";
 import { CustomerContext } from "../customer/CustomerProvider";
 import "./Animal.css";
-import { useHistory } from 'react-router-dom';
 
 export const AnimalForm = () => {
     const { addAnimal } = useContext(AnimalContext);

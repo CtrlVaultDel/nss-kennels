@@ -23,6 +23,7 @@ import { CustomerList } from "./customer/CustomerList.js";
 // Employees
 import { EmployeeProvider } from "./employee/EmployeeProvider.js";
 import { EmployeeList } from "./employee/EmployeeList.js";
+import { EmployeeForm } from "./employee/EmployeeForm.js";
 // -----
 
 export const ApplicationViews = () => {
@@ -43,11 +44,11 @@ export const ApplicationViews = () => {
 
             {/* Render the animal list when http://localhost:3000/animals */}
             <AnimalProvider>
+                <Route exact path="/animals">
+                    <AnimalList />
+                </Route>
                 <LocationProvider>
                     <CustomerProvider>
-                        <Route exact path="/animals">
-                            <AnimalList />
-                        </Route>
                         <Route exact path="/animals/create">
                             <AnimalForm />
                         </Route>
@@ -67,6 +68,11 @@ export const ApplicationViews = () => {
                 <Route path="/employees">
                     <EmployeeList />
                 </Route>
+                    <LocationProvider>
+                        <Route path="/employees/create">
+                            <EmployeeForm />
+                        </Route>
+                    </LocationProvider>
             </EmployeeProvider>
         </>
     );
