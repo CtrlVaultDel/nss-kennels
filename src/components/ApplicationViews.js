@@ -31,10 +31,12 @@ export const ApplicationViews = () => {
         <>
             {/* Render the location list when http://localhost:3000/ */}
             {/* Uses the keyword "exact" in order to not match the rest of the routes */}
-            <Route exact path="/">
-                <Home />
-            </Route>
-
+            <CustomerProvider>
+                <Route exact path="/">
+                    <Home />
+                </Route>
+            </CustomerProvider>
+            
             {/* Render the location list when http://localhost:3000/locations */}
             <LocationProvider>
                 <Route path="/locations">
