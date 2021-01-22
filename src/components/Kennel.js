@@ -1,14 +1,33 @@
 import React from "react";
-import { NavBar } from "./nav/NavBar";
-import { ApplicationViews } from "./ApplicationViews";
+import { Route, Redirect } from "react-router-dom";
+import { ApplicationViews } from "./ApplicationViews.js";
+import { NavBar } from "./nav/NavBar.js";
+import { Login } from "./auth/Login.js";
+import { Register } from "./auth/Register.js";
 import "./Kennel.css";
 
-// It is the parent component of the NavBar and Application Views
-// It bundles them together and renders the two child components
-
 export const Kennel = () => (
-    <>
-        <NavBar />
-        <ApplicationViews />
-    </>
+  <>
+    <Route
+      render={() => {
+        if (localStorage.getItem("kennel_customer")) {
+          return (
+            <>
+              <NavBar />
+              <ApplicationViews />
+            </>
+          );
+        } else {
+          return <Redirect to="/login" />;
+        }
+      }}
+    />
+
+    <Route path="/login">
+      <Login />
+    </Route>
+    <Route path="/register">
+      <Register />
+    </Route>
+  </>
 );

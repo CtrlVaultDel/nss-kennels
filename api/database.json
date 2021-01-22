@@ -33,12 +33,14 @@
     {
       "id": 1,
       "name": "Hannah Hall",
-      "address": "7002 Chestnut Ct"
+      "address": "7002 Chestnut Ct",
+      "email": "hannah@comcast.net"
     },
     {
       "id": 2,
       "name": "Benjamin Jamin",
-      "address": "5000 Crazy Ct"
+      "address": "5000 Crazy Ct",
+      "email": "benjamin@comcast.net"
     }
   ],
   "employees": [
