@@ -9,7 +9,7 @@ export const EmployeeList = () => {
   const { employees, getEmployees } = useContext(EmployeeContext);
 
   //useEffect - reach out to the world for something
-  useEffect(() => {getEmployees()}, []);
+  useEffect(getEmployees, []);
 
   const history = useHistory();
 

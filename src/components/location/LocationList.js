@@ -8,7 +8,7 @@ export const LocationList = () => {
   const { locations, getLocations } = useContext(LocationContext);
 
   //useEffect - reach out to the world for something
-  useEffect(() => {getLocations()}, []);
+  useEffect(getLocations, []);
 
   return (
     <div className="locations">

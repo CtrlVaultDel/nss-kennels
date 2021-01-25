@@ -8,7 +8,7 @@ export const CustomerList = () => {
   const { customers, getCustomers } = useContext(CustomerContext);
 
   //useEffect - reach out to the world for something
-  useEffect(() => {getCustomers()}, []);
+  useEffect(getCustomers, []);
 
   return (
     <div className="customers">

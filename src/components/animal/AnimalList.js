@@ -14,10 +14,16 @@ export const AnimalList = () => {
   // Essentially listens for a state change
   // This "Hooks" into when something happens and triggers an intended behavior 
   // "Tell me the thing you want to do and what will trigger that behavior"
-  // Two arguments: Anonymous function, Array of Dependencies (All of the things that may be changed that could trigger the behavior)
+  // Two arguments: A function & an Array of Dependencies (All of the things that may be changed that could trigger the behavior)
   // If nothing is in the array, it means do not do useEffect more than once; only do it when it is placed into the browser
-  useEffect(() => (getAnimals),[]);
 
+  // Basically, this is setting up an event listener
+  useEffect(getAnimals,[]);
+
+  // Lets us tell React which route we want to visit at some point. 
+  // We will tell it to render the AnimalForm when the user clicks the Add Animal button
+  // history will hold an array of all the paths that this application has been to. 
+  // When something is pushed to this, it tells React it should go to that path.
   const history = useHistory();
 
   return (

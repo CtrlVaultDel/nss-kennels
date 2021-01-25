@@ -67,11 +67,11 @@ export const ApplicationViews = () => {
 
             {/* Render the employee list when http://localhost:3000/employees */}
             <EmployeeProvider>
-                <Route path="/employees">
+                <Route exact path="/employees">
                     <EmployeeList />
                 </Route>
                     <LocationProvider>
-                        <Route path="/employees/create">
+                        <Route exact path="/employees/create">
                             <EmployeeForm />
                         </Route>
                     </LocationProvider>
