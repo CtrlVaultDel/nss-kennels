@@ -4,7 +4,7 @@
 
 // IMPORTS
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Home } from "./Home";
 
 // Locations
@@ -50,18 +50,21 @@ export const ApplicationViews = () => {
                 <Route exact path="/animals">
                     <AnimalList />
                 </Route>
+
+                {/* Render the animal detail when http://localhost:3000/animals/detail/{animalId} */}
+                {/* d+ means any digit of any length */}
+                <Route exact path="/animals/detail/:animalId(\d+)">
+                    <AnimalDetail />
+                </Route>
+                
                 <LocationProvider>
                     <CustomerProvider>
+                        {/* Render the animal form when http://localhost:3000/animals/create */}
                         <Route exact path="/animals/create">
                             <AnimalForm />
                         </Route>
-                        {/* d+ means any digit of any length */}
-                        <Route exact path="animals/detail/:animalId(\d+)">
-                            <AnimalDetail />
-                        </Route>
                     </CustomerProvider>
                 </LocationProvider>
-                
             </AnimalProvider>
 
             {/* Render the customer list when http://localhost:3000/customers */}

@@ -1,26 +1,22 @@
-import React, { useContext, useEffect, useState } from "react"
-import { AnimalContext } from "./AnimalProvider"
-import "./Animal.css"
-
+import React, { useContext, useEffect, useState } from "react";
 // useParams grabs parameters of the url to use in the component
-import { useParams, useHistory } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import { AnimalContext } from "./AnimalProvider.js";
+import "./Animal.css";
 
 export const AnimalDetail = () => {
-  const { getAnimalById } = useContext(AnimalContext)
+  const { getAnimalById } = useContext(AnimalContext);
 
     // This is one animal so it is an object, not an array
-	const [animal, setAnimal] = useState({})
+    const [animal, setAnimal] = useState({});
 
     // useParams returns an object based off the key (animalId) for example
-	const {animalId} = useParams();
+    const {animalId} = useParams();
 
   useEffect(() => {
-    console.log("useEffect", animalId)
     getAnimalById(animalId)
-    .then((response) => {
-      setAnimal(response)
-    })
-    }, [])
+    .then((response) => setAnimal(response));
+    }, []);
 
   return (
     <section className="animal">
@@ -33,5 +29,5 @@ export const AnimalDetail = () => {
       <div className="animal__location">Location: {animal.location?.name}</div>
       <div className="animal__owner">Customer: {animal.customer?.name}</div>
     </section>
-  )
-}
+  );
+};

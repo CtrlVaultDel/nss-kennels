@@ -20,9 +20,9 @@ export const AnimalProvider = (props) => {
     };
 
     const getAnimalById = (id) => {
-        return fetch(`http://localhost:8088/animals/${id}?_expand=location&_expand=customer`)
-            .then(res => res.json())
-    }
+        return fetch(`http://localhost:8088/animals/${id}?_expand=customer&_expand=location`)
+            .then(res => res.json());
+    };
 
     const addAnimal = animalObj => {
         return fetch("http://localhost:8088/animals", {
