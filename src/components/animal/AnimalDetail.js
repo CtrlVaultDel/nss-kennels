@@ -5,7 +5,7 @@ import { AnimalContext } from "./AnimalProvider.js";
 import "./Animal.css";
 
 export const AnimalDetail = () => {
-  const { getAnimalById } = useContext(AnimalContext);
+    const { getAnimalById } = useContext(AnimalContext);
 
     // This is one animal so it is an object, not an array
     const [animal, setAnimal] = useState({});
