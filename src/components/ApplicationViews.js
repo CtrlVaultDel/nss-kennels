@@ -15,6 +15,7 @@ import { LocationList } from "./location/LocationList.js";
 import { AnimalProvider } from "./animal/AnimalProvider.js";
 import { AnimalList } from "./animal/AnimalList.js";
 import { AnimalForm } from "./animal/AnimalForm.js";
+import { AnimalDetail } from "./animal/AnimalDetail.js";
 
 // Customers
 import { CustomerProvider } from "./customer/CustomerProvider.js";
@@ -54,8 +55,13 @@ export const ApplicationViews = () => {
                         <Route exact path="/animals/create">
                             <AnimalForm />
                         </Route>
+                        {/* d+ means any digit of any length */}
+                        <Route exact path="animals/detail/:animalId(\d+)">
+                            <AnimalDetail />
+                        </Route>
                     </CustomerProvider>
                 </LocationProvider>
+                
             </AnimalProvider>
 
             {/* Render the customer list when http://localhost:3000/customers */}

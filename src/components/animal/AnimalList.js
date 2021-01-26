@@ -18,7 +18,7 @@ export const AnimalList = () => {
   // If nothing is in the array, it means do not do useEffect more than once; only do it when it is placed into the browser
 
   // Basically, this is setting up an event listener
-  useEffect(getAnimals,[]);
+  useEffect(getAnimals, []);
 
   // Lets us tell React which route we want to visit at some point. 
   // We will tell it to render the AnimalForm when the user clicks the Add Animal button

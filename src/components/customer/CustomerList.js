@@ -11,11 +11,14 @@ export const CustomerList = () => {
   useEffect(getCustomers, []);
 
   return (
-    <div className="customers">
-      {
-        //   key is used to give an independant value to each card for React to keep track
-        customers.map(customer => <CustomerCard key={customer.id} customer={customer} />)
-      }
-    </div>
+    <>
+      <h2>Customers</h2>
+      <div className="customers">
+        {
+          //   key is used to give an independant value to each card for React to keep track
+          customers.map(customer => <CustomerCard key={customer.id} customer={customer} />)
+        }
+      </div>
+    </>
   );
 };
