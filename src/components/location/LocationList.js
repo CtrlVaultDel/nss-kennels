@@ -8,14 +8,17 @@ export const LocationList = () => {
   const { locations, getLocations } = useContext(LocationContext);
 
   //useEffect - reach out to the world for something
-  useEffect(() => {getLocations()}, []);
+  useEffect(getLocations, []);
 
   return (
-    <div className="locations">
-      {
-        //   key is used to give an independant value to each card for React to keep track
-        locations.map(location => <LocationCard key={location.id} location={location} />)
-      }
-    </div>
+    <>
+      <h2>Locations</h2>
+      <div className="locations">
+        {
+          //   key is used to give an independant value to each card for React to keep track
+          locations.map(location => <LocationCard key={location.id} location={location} />)
+        }
+      </div>
+    </>
   );
 };

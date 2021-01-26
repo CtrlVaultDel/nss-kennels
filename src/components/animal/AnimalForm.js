@@ -39,6 +39,7 @@ export const AnimalForm = () => {
     const handleControlledInputChange = (event) => {
       /* When changing a state object or array,
       always create a copy, make changes, and then set state.*/
+      // Copies each property of animal and saves it to newAnimal
       const newAnimal = { ...animal };
 
       /* Animal is an object with properties.

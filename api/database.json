@@ -53,6 +53,11 @@
       "id": 2,
       "name": "Chuck Norris",
       "locationId": 2
+    },
+    {
+      "id": 3,
+      "name": "Steve Joobs",
+      "locationId": 1
     }
   ],
   "locations": [

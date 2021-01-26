@@ -9,9 +9,14 @@ export const LocationProvider = (props) => {
     const [locations, setLocations] = useState([])
 
     const getLocations = () => {
-        return fetch("http://localhost:8088/locations")
+        return fetch("http://localhost:8088/locations?_embed=employees&_embed=animals")
         .then(res => res.json())
         .then(setLocations);
+    };
+
+    const getLocationById = (id) => {
+        return fetch(`http://localhost:8088/locations/${id}?_embed=employees&_embed=animals`)
+            .then(res => res.json());
     };
 
     const addLocation = locationObj => {
@@ -29,7 +34,7 @@ export const LocationProvider = (props) => {
     // Provider = Interface that other components can use in order to gain access
     // to what the provider holds.
     return (
-        <LocationContext.Provider value={{locations, getLocations, addLocation}}>
+        <LocationContext.Provider value={{locations, getLocations, getLocationById, addLocation}}>
             {props.children}
         </LocationContext.Provider>
     );
