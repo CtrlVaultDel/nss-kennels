@@ -10,6 +10,7 @@ import { Home } from "./Home";
 // Locations
 import { LocationProvider } from "./location/LocationProvider.js";
 import { LocationList } from "./location/LocationList.js";
+import { LocationDetail } from "./location/LocationDetail.js";
 
 // Animals
 import { AnimalProvider } from "./animal/AnimalProvider.js";
@@ -39,8 +40,12 @@ export const ApplicationViews = () => {
             {/* ------------LOCATIONS------------ */}
             <LocationProvider>
                 {/* Render the location list when http://localhost:3000/locations */}
-                <Route path="/locations">
+                <Route exact path="/locations">
                     <LocationList />
+                </Route>
+                {/* Render the location list when http://localhost:3000/locations/detail/{animalId} */}
+                <Route exact path="/locations/detail/:locationId(\d+)">
+                    <LocationDetail />
                 </Route>
             </LocationProvider>
 
@@ -70,7 +75,7 @@ export const ApplicationViews = () => {
             {/* ------------CUSTOMERS------------ */}
             <CustomerProvider>
                 {/* Render the customer list when http://localhost:3000/customers */}
-                <Route path="/customers">
+                <Route exact path="/customers">
                     <CustomerList />
                 </Route>
             </CustomerProvider>
