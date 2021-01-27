@@ -20,6 +20,7 @@ export const EmployeeForm = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const {employeeId} = useParams();
+    
 	  const history = useHistory();
 
     //when field changes, update state. This causes a re-render and updates the view.
@@ -48,7 +49,6 @@ export const EmployeeForm = () => {
           updateEmployee({
               id: employee.id,
               name: employee.name,
-              breed: employee.breed,
               locationId: parseInt(employee.locationId),
           })
           .then(() => history.push(`/employees/detail/${employee.id}`))
@@ -56,7 +56,6 @@ export const EmployeeForm = () => {
           //POST - add
           addEmployee({
               name: employee.name,
-              breed: employee.breed,
               locationId: parseInt(employee.locationId),
           })
           .then(() => history.push("/employees"))

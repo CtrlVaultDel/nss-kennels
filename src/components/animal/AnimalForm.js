@@ -72,7 +72,9 @@ export const AnimalForm = () => {
 
     // Get customers and locations. If animalId is in the URL, getAnimalById
     useEffect(() => {
-      getCustomers().then(getLocations).then(() => {
+      getCustomers()
+      .then(getLocations)
+      .then(() => {
         if (animalId){
           getAnimalById(animalId)
           .then(animal => {
