@@ -25,6 +25,7 @@ export const EmployeeForm = () => {
     Reach out to the world and get customers state
     and locations state on initialization.
     */
+   // eslint-disable-next-line
     useEffect(() => {getLocations()}, []);
 
     //when a field changes, update state. The return will re-render and display based on the values in state

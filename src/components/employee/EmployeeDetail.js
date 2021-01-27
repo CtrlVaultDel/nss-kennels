@@ -16,7 +16,8 @@ export const EmployeeDetail = () => {
   useEffect(() => {
     getEmployeeById(employeeId)
     .then((response) => setEmployee(response));
-    }, []);
+    }, // eslint-disable-next-line
+    []);
 
   return (
     <section className="employee">

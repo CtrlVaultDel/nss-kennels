@@ -35,6 +35,17 @@ export const AnimalProvider = (props) => {
         .then(getAnimals);
     };
 
+    const updateAnimal = animal => {
+        return fetch(`http://localhost:8088/animals/${animal.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(animal)
+        })
+          .then(getAnimals)
+      };
+
     const releaseAnimal = animalId => {
         return fetch(`http://localhost:8088/animals/${animalId}`, {
             method: "DELETE"
@@ -52,7 +63,7 @@ export const AnimalProvider = (props) => {
     // Provider = Interface that other components can use in order to gain access
     // to what the provider holds.
     return (
-        <AnimalContext.Provider value={{animals, getAnimals, getAnimalById, addAnimal, releaseAnimal}}>
+        <AnimalContext.Provider value={{animals, getAnimals, getAnimalById, addAnimal, updateAnimal, releaseAnimal}}>
             {props.children}
         </AnimalContext.Provider>
     );

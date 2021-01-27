@@ -16,7 +16,8 @@ export const LocationDetail = () => {
   useEffect(() => {
     getLocationById(locationId)
     .then((response) => setLocation(response));
-    }, []);
+    }, // eslint-disable-next-line
+    []);
 
   return (
     <section className="location">

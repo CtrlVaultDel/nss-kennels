@@ -8,6 +8,7 @@ export const LocationList = () => {
   const { locations, getLocations } = useContext(LocationContext);
 
   //useEffect - reach out to the world for something
+  // eslint-disable-next-line
   useEffect(getLocations, []);
 
   return (
