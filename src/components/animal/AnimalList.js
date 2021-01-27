@@ -1,40 +1,43 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { AnimalContext } from "./AnimalProvider.js";
 import { AnimalCard } from "./AnimalCard.js";
 import "./Animal.css";
 
 // The initial render is mounting to the DOM
-// Subsequent "renders" are not calling AnimalList again, 
-// React determines exactly what to change instead of replacing the entire component
 export const AnimalList = () => {
-  const { animals, getAnimals } = useContext(AnimalContext);
+  const { animals, getAnimals, searchTerms } = useContext(AnimalContext);
+  
+  // Since you are no longer ALWAYS displaying all of the animals
+  const [ filteredAnimals, setFiltered ] = useState([]);
+  const history = useHistory();
 
   // useEffect - reach out to the world for something
-  // Essentially listens for a state change
-  // This "Hooks" into when something happens and triggers an intended behavior 
-  // "Tell me the thing you want to do and what will trigger that behavior"
-  // Two arguments: A function & an Array of Dependencies (All of the things that may be changed that could trigger the behavior)
-  // If nothing is in the array, it means do not do useEffect more than once; only do it when it is placed into the browser
-
-  // Basically, this is setting up an event listener
   // eslint-disable-next-line
   useEffect(getAnimals, []);
 
-  // Lets us tell React which route we want to visit at some point. 
-  // We will tell it to render the AnimalForm when the user clicks the Add Animal button
-  // history will hold an array of all the paths that this application has been to. 
-  // When something is pushed to this, it tells React it should go to that path.
-  const history = useHistory();
+   // useEffect dependency array with dependencies - will run if dependency changes (state)
+  // searchTerms will cause a change
+  useEffect(() => {
+    if (searchTerms !== "") {
+      // If the search field is not blank, display matching animals
+      const subset = animals.filter(animal => animal.name.toLowerCase().includes(searchTerms));
+      setFiltered(subset);
+    } else {
+      // If the search field is blank, display all animals
+      setFiltered(animals);
+    }
+  }, [searchTerms, animals]);
+
 
   return (
     <>
       <h2>Animals</h2>
-      <button onClick={() => {history.push("/animals/create")}}>Add Animal</button>
+      <button onClick={() => {history.push("/animals/create")}}>Make Reservation</button>
       <div className="animals">
-        {
-          animals.map(animal => <AnimalCard key={animal.id} animal={animal} />)
-        }
+      {
+        filteredAnimals.map(animal => <AnimalCard key={animal.id} animal={animal} />)
+      }
       </div>
     </>
   );
