@@ -10,6 +10,7 @@ import { Home } from "./Home";
 // Locations
 import { LocationProvider } from "./location/LocationProvider.js";
 import { LocationList } from "./location/LocationList.js";
+import { LocationForm } from "./location/LocationForm.js";
 import { LocationDetail } from "./location/LocationDetail.js";
 
 // Animals
@@ -43,9 +44,20 @@ export const ApplicationViews = () => {
                 <Route exact path="/locations">
                     <LocationList />
                 </Route>
+
                 {/* Render the location list when http://localhost:3000/locations/detail/{animalId} */}
                 <Route exact path="/locations/detail/:locationId(\d+)">
                     <LocationDetail />
+                </Route>
+
+                {/* Render the animal form when http://localhost:3000/animals/create */}
+                <Route exact path="/locations/create">
+                    <LocationForm />
+                </Route>
+
+                {/* Render the animal form when http://localhost:3000/animals/edit */}
+                <Route exact path="/locations/edit/:locationId(\d+)">
+                    <LocationForm />
                 </Route>
             </LocationProvider>
 
@@ -66,6 +78,11 @@ export const ApplicationViews = () => {
                     <CustomerProvider>
                         {/* Render the animal form when http://localhost:3000/animals/create */}
                         <Route exact path="/animals/create">
+                            <AnimalForm />
+                        </Route>
+
+                        {/* Render the animal form when http://localhost:3000/animals/edit */}
+                        <Route path="/animals/edit/:animalId(\d+)">
                             <AnimalForm />
                         </Route>
                     </CustomerProvider>
@@ -95,6 +112,11 @@ export const ApplicationViews = () => {
                     <LocationProvider>
                         {/* Render the employee form when http://localhost:3000/employee/create */}
                         <Route exact path="/employees/create">
+                            <EmployeeForm />
+                        </Route>
+
+                        {/* Render the employee form when http://localhost:3000/employee/edit */}
+                        <Route path="/employees/edit/:employeeId(\d+)">
                             <EmployeeForm />
                         </Route>
                     </LocationProvider>

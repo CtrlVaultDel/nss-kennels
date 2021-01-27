@@ -18,6 +18,7 @@ export const AnimalList = () => {
   // If nothing is in the array, it means do not do useEffect more than once; only do it when it is placed into the browser
 
   // Basically, this is setting up an event listener
+  // eslint-disable-next-line
   useEffect(getAnimals, []);
 
   // Lets us tell React which route we want to visit at some point. 

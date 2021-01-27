@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 // useParams grabs parameters of the url to use in the component
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { EmployeeContext } from "./EmployeeProvider.js";
 import "./Employee.css";
 
 export const EmployeeDetail = () => {
-    const { getEmployeeById } = useContext(EmployeeContext);
+    const { getEmployeeById, fireEmployee } = useContext(EmployeeContext);
 
     // This is one employee so it is an object, not an array
     const [employee, setEmployee] = useState({});
@@ -13,10 +13,18 @@ export const EmployeeDetail = () => {
     // useParams returns an object based off the key (employeeId) for example
     const {employeeId} = useParams();
     
+    const history = useHistory();
+
+    const handleFiring = () => {
+      fireEmployee(employee.id)
+      .then(() => history.push("/employees"));
+  };
+
   useEffect(() => {
     getEmployeeById(employeeId)
     .then((response) => setEmployee(response));
-    }, []);
+    }, // eslint-disable-next-line
+    []);
 
   return (
     <section className="employee">
@@ -25,6 +33,10 @@ export const EmployeeDetail = () => {
         <div className="employee__location__name">Location: {employee.location?.name}</div>
         <div className="employee__location__address">Address: {employee.location?.address}</div>
       </div>
+      <button onClick={handleFiring}>Fire Employee</button>
+      <button onClick={() => {
+          history.push(`/employees/edit/${employee.id}`)
+      }}>Edit</button>
     </section>
   );
 };

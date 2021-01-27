@@ -3,9 +3,9 @@
     {
       "id": 1,
       "name": "Doodles",
-      "breed": "Poodle",
-      "customerId": 1,
-      "locationId": 2
+      "breed": "Wookie",
+      "locationId": 1,
+      "customerId": 2
     },
     {
       "id": 2,
@@ -70,6 +70,11 @@
       "id": 2,
       "name": "Nashville South",
       "address": "209 Emory Drive"
+    },
+    {
+      "name": "Nooby City",
+      "address": "Noobington Avenue",
+      "id": 3
     }
   ]
 }

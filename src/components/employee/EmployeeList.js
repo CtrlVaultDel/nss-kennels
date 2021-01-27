@@ -9,6 +9,7 @@ export const EmployeeList = () => {
   const { employees, getEmployees } = useContext(EmployeeContext);
 
   //useEffect - reach out to the world for something
+  // eslint-disable-next-line
   useEffect(getEmployees, []);
 
   const history = useHistory();

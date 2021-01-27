@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 // useParams grabs parameters of the url to use in the component
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { LocationContext } from "./LocationProvider.js";
 import "./Location.css";
 
 export const LocationDetail = () => {
-    const { getLocationById } = useContext(LocationContext);
+    const { getLocationById, removeLocation } = useContext(LocationContext);
 
     // This is one location so it is an object, not an array
     const [location, setLocation] = useState({});
@@ -13,10 +13,18 @@ export const LocationDetail = () => {
     // useParams returns an object based off the key (locationId) for example
     const {locationId} = useParams();
 
+    const history = useHistory();
+
+    const handleRemoving = () => {
+      removeLocation(location.id)
+      .then(() => history.push("/locations"));
+  };
+
   useEffect(() => {
     getLocationById(locationId)
     .then((response) => setLocation(response));
-    }, []);
+    }, // eslint-disable-next-line
+    []);
 
   return (
     <section className="location">
@@ -34,6 +42,10 @@ export const LocationDetail = () => {
             {location.animals?.map(animal => animal.name).join(", ")}
           </div>
       </div>
+      <button onClick={handleRemoving}>Remove Location</button>
+      <button onClick={() => {
+          history.push(`/locations/edit/${location.id}`)
+      }}>Edit</button>
     </section>
   );
 };

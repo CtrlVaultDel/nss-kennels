@@ -30,11 +30,29 @@ export const LocationProvider = (props) => {
         .then(getLocations);
     };
 
+    const updateLocation = location => {
+        return fetch(`http://localhost:8088/locations/${location.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(location)
+        })
+          .then(getLocations);
+      };
+
+    const removeLocation = locationId => {
+        return fetch(`http://localhost:8088/locations/${locationId}`, {
+            method: "DELETE"
+        })
+        .then(getLocations);
+    };
+
     // Subcomponent that renders a subset of itself called a Provider
     // Provider = Interface that other components can use in order to gain access
     // to what the provider holds.
     return (
-        <LocationContext.Provider value={{locations, getLocations, getLocationById, addLocation}}>
+        <LocationContext.Provider value={{locations, getLocations, getLocationById, addLocation, updateLocation, removeLocation}}>
             {props.children}
         </LocationContext.Provider>
     );
