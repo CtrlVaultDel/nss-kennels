@@ -1,14 +1,15 @@
-import React, { useContext, useEffect, useState } from "react"
-import { LocationContext } from "../location/LocationProvider"
-import { AnimalContext } from "../animal/AnimalProvider"
-import { CustomerContext } from "../customer/CustomerProvider"
-import "./Animal.css"
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from 'react-router-dom';
+import { LocationContext } from "../location/LocationProvider";
+import { AnimalContext } from "../animal/AnimalProvider";
+import { CustomerContext } from "../customer/CustomerProvider";
+import "./Animal.css";
+
 
 export const AnimalForm = () => {
-    const { addAnimal, getAnimalById, updateAnimal } = useContext(AnimalContext)
-    const { locations, getLocations } = useContext(LocationContext)
-    const { customers, getCustomers } = useContext(CustomerContext)
+    const { addAnimal, getAnimalById, updateAnimal } = useContext(AnimalContext);
+    const { locations, getLocations } = useContext(LocationContext);
+    const { customers, getCustomers } = useContext(CustomerContext);
 
     // For edit, hold on to state of animal in this view
     // You need an initial state for it to allow you to edit it
@@ -30,14 +31,14 @@ export const AnimalForm = () => {
     const handleControlledInputChange = (event) => {
       //When changing a state object or array,
       //always create a copy make changes, and then set state.
-      const newAnimal = { ...animal }
+      const newAnimal = { ...animal };
 
       //animal is an object with properties.
       //set the property to the new value
-      newAnimal[event.target.name] = event.target.value
+      newAnimal[event.target.name] = event.target.value;
       
       //update state
-      setAnimal(newAnimal)
+      setAnimal(newAnimal);
     }
 
     const handleSaveAnimal = () => {
@@ -55,7 +56,7 @@ export const AnimalForm = () => {
               locationId: parseInt(animal.locationId),
               customerId: parseInt(animal.customerId)
           })
-          .then(() => history.push(`/animals/detail/${animal.id}`))
+          .then(() => history.push(`/animals/detail/${animal.id}`));
         }else {
           //POST - add
           addAnimal({
@@ -64,10 +65,10 @@ export const AnimalForm = () => {
               locationId: parseInt(animal.locationId),
               customerId: parseInt(animal.customerId)
           })
-          .then(() => history.push("/animals"))
-        }
-      }
-    }
+          .then(() => history.push("/animals"));
+        };
+      };
+    };
 
     // Get customers and locations. If animalId is in the URL, getAnimalById
     useEffect(() => {
@@ -75,15 +76,15 @@ export const AnimalForm = () => {
         if (animalId){
           getAnimalById(animalId)
           .then(animal => {
-              setAnimal(animal)
-              setIsLoading(false)
+              setAnimal(animal);
+              setIsLoading(false);
           })
         } else {
-          setIsLoading(false)
-        }
-      })
+          setIsLoading(false);
+        };
+      });
     }, // eslint-disable-next-line
-    [])
+    []);
 
     //since state controlls this component, we no longer need
     //useRef(null) or ref
@@ -140,5 +141,5 @@ export const AnimalForm = () => {
           }}>
         {animalId ? <>Save Animal</> : <>Add Animal</>}</button>
       </form>
-    )
-}
+    );
+};

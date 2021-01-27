@@ -30,11 +30,29 @@ export const EmployeeProvider = (props) => {
         .then(getEmployees);
     };
 
+    const updateEmployee = employee => {
+        return fetch(`http://localhost:8088/employees/${employee.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(employee)
+        })
+          .then(getEmployees);
+      };
+
+    const fireEmployee = employeeId => {
+        return fetch(`http://localhost:8088/employees/${employeeId}`, {
+            method: "DELETE"
+        })
+        .then(getEmployees);
+    };
+
     // Subcomponent that renders a subset of itself called a Provider
     // Provider = Interface that other components can use in order to gain access
     // to what the provider holds.
     return (
-        <EmployeeContext.Provider value={{employees, getEmployees, getEmployeeById, addEmployee}}>
+        <EmployeeContext.Provider value={{employees, getEmployees, getEmployeeById, addEmployee, updateEmployee, fireEmployee}}>
             {props.children}
         </EmployeeContext.Provider>
     );

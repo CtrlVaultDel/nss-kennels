@@ -68,7 +68,7 @@ export const ApplicationViews = () => {
                         <Route exact path="/animals/create">
                             <AnimalForm />
                         </Route>
-                        
+
                         {/* Render the animal form when http://localhost:3000/animals/edit */}
                         <Route path="/animals/edit/:animalId(\d+)">
                             <AnimalForm />
@@ -100,6 +100,11 @@ export const ApplicationViews = () => {
                     <LocationProvider>
                         {/* Render the employee form when http://localhost:3000/employee/create */}
                         <Route exact path="/employees/create">
+                            <EmployeeForm />
+                        </Route>
+
+                        {/* Render the employee form when http://localhost:3000/employee/edit */}
+                        <Route path="/employees/edit/:employeeId(\d+)">
                             <EmployeeForm />
                         </Route>
                     </LocationProvider>
