@@ -18,6 +18,7 @@ import { AnimalProvider } from "./animal/AnimalProvider.js";
 import { AnimalList } from "./animal/AnimalList.js";
 import { AnimalForm } from "./animal/AnimalForm.js";
 import { AnimalDetail } from "./animal/AnimalDetail.js";
+import { AnimalSearch } from "./animal/AnimalSearch.js";
 
 // Customers
 import { CustomerProvider } from "./customer/CustomerProvider.js";
@@ -63,8 +64,9 @@ export const ApplicationViews = () => {
 
             {/* -------------ANIMALS------------- */}
             <AnimalProvider>
-                {/* Render the animal list when http://localhost:3000/animals */}
+                {/* Render the animal searchbar & list when http://localhost:3000/animals */}
                 <Route exact path="/animals">
+                    <AnimalSearch />
                     <AnimalList />
                 </Route>
 

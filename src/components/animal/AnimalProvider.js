@@ -51,7 +51,9 @@ export const AnimalProvider = (props) => {
             method: "DELETE"
         })
             .then(getAnimals)
-    }
+    };
+
+    const [ searchTerms, setSearchTerms ] = useState("");
 
     /*
         You return a context provider which has the
@@ -63,7 +65,7 @@ export const AnimalProvider = (props) => {
     // Provider = Interface that other components can use in order to gain access
     // to what the provider holds.
     return (
-        <AnimalContext.Provider value={{animals, getAnimals, getAnimalById, addAnimal, updateAnimal, releaseAnimal}}>
+        <AnimalContext.Provider value={{animals, getAnimals, getAnimalById, addAnimal, updateAnimal, releaseAnimal, searchTerms, setSearchTerms}}>
             {props.children}
         </AnimalContext.Provider>
     );
